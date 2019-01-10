@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "blacklight"
   s.add_dependency "rails", "~> 5.1.6"
   s.add_dependency "rsolr"
-  s.add_dependency "valkyrie", "~> 1.3.0"
+  s.add_dependency "valkyrie", "~> 1.4.0"
 
   s.add_development_dependency "rspec-rails", "~> 3.8.1"
   s.add_development_dependency "sqlite3"
