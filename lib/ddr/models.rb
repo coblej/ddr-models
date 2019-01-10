@@ -10,7 +10,26 @@ module Ddr
 
     autoload :Base
     autoload :Metadata
+    autoload :Governable
     autoload :HasContent
+    autoload :HasStructMetadata
+    autoload :HasThumbnail
+    autoload :Structure
+
+    module Structures
+      extend ActiveSupport::Autoload
+      autoload :Agent
+      autoload :Div
+      autoload :File
+      autoload :FileGrp
+      autoload :FileSec
+      autoload :FLocat
+      autoload :Fptr
+      autoload :MetsHdr
+      autoload :Mptr
+      autoload :StructMap
+      autoload :ComponentTypeTerm
+    end
 
     def self.configure
       yield self

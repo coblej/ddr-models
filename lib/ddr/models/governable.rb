@@ -1,10 +1,10 @@
 module Ddr
   module Models
-    module HasContent
+    module Governable
       extend ActiveSupport::Concern
 
       included do
-        attribute :content_identifier, Valkyrie::Types::String.optional
+        attribute :is_governed_by, Valkyrie::Types::ID.optional
       end
 
     end

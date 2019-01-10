@@ -4,8 +4,14 @@ module Ddr
 
       enable_optimistic_locking
 
-      include Metadata
-      include Valkyrie::Resource::AccessControls
+      # include Describable -- incorporated into Metadata
+      include Metadata # incorporates Describable and HasAdminMetadata
+      include Governable
+      include HasThumbnail
+      # include EventLoggable -- should be pretty straightforward
+      # include FixityCheckable -- need to revisit Ddr::Actions::FixityCheck
+      # include FileManagement -- will need revision
+      # include Indexing
 
     end
   end

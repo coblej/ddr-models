@@ -1,10 +1,10 @@
 module Ddr
   module Models
-    module HasContent
+    module HasThumbnail
       extend ActiveSupport::Concern
 
       included do
-        attribute :content_identifier, Valkyrie::Types::String.optional
+        attribute :thumbnail_identifier, Valkyrie::Types::String.optional
       end
 
     end
