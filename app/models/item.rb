@@ -26,10 +26,4 @@ class Item < Ddr::Models::Base
 
   alias_method :part_ids, :child_ids
 
-  private
-
-  def query_service
-    @query_service ||= Valkyrie.config.metadata_adapter.query_service
-  end
-
 end

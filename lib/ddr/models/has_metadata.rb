@@ -1,28 +1,22 @@
 module Ddr
   module Models
-    module Metadata
+    module HasMetadata
       extend ActiveSupport::Concern
 
       included do
-        # Default type is Valkyrie::Types::Set.optional
+        def can_have_metadata?
+          true
+        end
+
         # From Describable
-        attribute :contributor
-        attribute :coverage
-        attribute :creator
-        attribute :date
-        attribute :description
-        attribute :format
-        attribute :identifier
-        attribute :language
-        attribute :publisher
-        attribute :relation
-        attribute :rights
-        attribute :source
-        attribute :subject
-        attribute :title
-        attribute :type
+        Ddr::Vocab::Vocabulary.term_names(RDF::Vocab::DC11).each do |term_name|
+          attribute term_name, Valkyrie::Types::Set.optional
+        end
         # From HasAdminMetadata
-        attribute :affiliation
+        # multivalued
+        attribute :affiliation, Valkyrie::Types::Set.optional
+        attribute :rights_note, Valkyrie::Types::Set.optional
+        # single-valued
         attribute :admin_set, Valkyrie::Types::String
         attribute :aleph_id, Valkyrie::Types::String
         attribute :aspace_id, Valkyrie::Types::String
@@ -39,7 +33,6 @@ module Ddr
         attribute :permanent_id, Valkyrie::Types::String
         attribute :permanent_url, Valkyrie::Types::String
         attribute :research_help_contact, Valkyrie::Types::String
-        attribute :rights_note
         attribute :workflow_state, Valkyrie::Types::String
       end
 

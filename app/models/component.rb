@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class Component < Ddr::Models::Base
 
+  include Ddr::Models::Captionable
   include Ddr::Models::HasContent
 
   attribute :is_part_of_ids, Valkyrie::Types::Set.of(Valkyrie::Types::ID.optional).optional
@@ -16,12 +17,6 @@ class Component < Ddr::Models::Base
 
   def target_ids
     query_service.find_inverse_references_by(resource: self, property: 'is_external_target_for_ids').to_a
-  end
-
-  private
-
-  def query_service
-    @query_service ||= Valkyrie.config.metadata_adapter.query_service
   end
 
 end
